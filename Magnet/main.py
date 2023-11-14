@@ -46,7 +46,7 @@ if active > 0:
     rtc.memory(b'' + str(curr_status))
 
     station = WLAN(STA_IF)
-    ssid = "NU"
+    ssid = "NUdormitory"
     password = "1234512345"
     station.active(True)
     station.connect(ssid, password)
@@ -63,10 +63,11 @@ if active > 0:
     mqttc.publish(TOPIC,  b'' + str(curr_status))
 
 else:
-    change_signal(prev_status)
-    rtc.memory(b'' + str(prev_status))
+    print("Active < 0")
+    curr_status = isOpen()
+    change_signal(curr_status)
+    rtc.memory(b'' + str(curr_status))
 
-print("Going to sleep")
-sleep(3)
+sleep(1)
 print("Going to deepsleep")
 deepsleep()
