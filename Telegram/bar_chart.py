@@ -54,7 +54,7 @@ def get_plot(weights, starts, colors):
     plt.margins(x=0, y=0)
     legend_elements = [Patch(facecolor='#F84F31', label='Closed'),
                        Patch(facecolor='#23C552', label='Open')]
-    plt.legend(handles=legend_elements, loc='lower left', bbox_to_anchor=(-0.01, -0.17), prop={'size': 9}, ncols=2)
+    plt.legend(handles=legend_elements, loc='lower left', bbox_to_anchor=(-0.01, -0.18), prop={'size': 9}, ncols=2)
     
     # Save the plot
     filename = f'charts/door_status {datetime.now().strftime("%Y-%m-%d %H-%M-%S-%f")}.png'
