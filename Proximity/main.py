@@ -9,11 +9,11 @@ sensor = HCSR04(trigger_pin = 5, echo_pin = 4, echo_timeout_us = 10000)
 def isOpen():
     # 1 - door is open and 0 - door is closed
     distance = sensor.distance_cm()
-    if distance > 3.:
-        print("door is open")
-    else:
-        print("door is closed")
-    return 1 if distance > 3. else 0
+#     if distance > 3. or distance < 0:
+#         print("Door is open")
+#     else:
+#         print("Door is closed")
+    return 1 if distance > 3. or distance < 0  else 0
 
 rtc = RTC()
 prev_stat = rtc.memory()
@@ -28,7 +28,7 @@ rtc.memory(b'' + str(curr_stat))
 
 if curr_stat != prev_stat:
     station = WLAN(STA_IF)
-    ssid = "NU"
+    ssid = "NUdormitory"
     password = "1234512345"
     station.active(True)
     station.connect(ssid, password)
