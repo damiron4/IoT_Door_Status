@@ -56,8 +56,9 @@ if active > 0:
 
     print('Connection successful')
     BROKER_ADDR = 'test.mosquitto.org'
-    CLIENT_NAME = 'DOOR1'
-    TOPIC       = b'door'
+    CLIENT_NAME = 'DOOR441'
+    TOPIC       = b'door/441'
+    
     mqttc = MQTTClient(CLIENT_NAME, BROKER_ADDR, port = 1883, keepalive=60)
     mqttc.connect()
     mqttc.publish(TOPIC,  b'' + str(curr_status))
