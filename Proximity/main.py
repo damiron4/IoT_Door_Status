@@ -38,10 +38,10 @@ if curr_stat != prev_stat:
 
     print('Connection successful')
     
-    CLIENT_NAME = 'DOOR441'
+    CLIENT_NAME = 'DOOR554'
     BROKER_ADDR = 'test.mosquitto.org'
     PORT        = 1883
-    TOPIC       = b'door/441'
+    TOPIC       = b'door/554'
 
     mqttc = MQTTClient(CLIENT_NAME, BROKER_ADDR, PORT, keepalive = 60)
     mqttc.connect()
