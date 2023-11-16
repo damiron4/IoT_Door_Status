@@ -48,6 +48,6 @@ if curr_stat != prev_stat:
     mqttc.publish(TOPIC,  b'' + str(curr_stat))
 
 print("Going to sleep")
-sleep(3)
+sleep(1)
 print("Going to deepsleep")
 deepsleep(5)
