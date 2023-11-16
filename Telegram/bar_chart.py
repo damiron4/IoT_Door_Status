@@ -44,7 +44,7 @@ def get_plot(weights, starts, colors):
     # Customize the plot
     plt.yticks([])
     plt.xticks(np.arange(7.5, 31.5, 8), [(datetime.now() - timedelta(hours=i)).strftime('%H:%M') for i in range(0, 24, 8)][::-1])
-    plt.rcParams['font.sans-serif'] = "Roboto"
+    # plt.rcParams['font.sans-serif'] = "Roboto"
     plt.gca().spines['top'].set_visible(False)
     plt.gca().spines['right'].set_visible(False)
     plt.gca().spines['bottom'].set_visible(False)

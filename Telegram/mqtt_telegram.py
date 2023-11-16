@@ -17,6 +17,8 @@ CHAT_ID         = os.environ.get('CHAT_ID')
 MQTT_BROKER = os.environ.get('MQTT_BROKER')
 MQTT_PORT   = int(os.environ.get('MQTT_PORT'))
 MQTT_TOPIC  = os.environ.get('MQTT_TOPIC')
+# MQTT_USERNAME  = os.environ.get('MQTT_USERNAME')
+# MQTT_PASSWORD  = os.environ.get('MQTT_PASSWORD')
 
 DATA_FILE = 'data.csv'
 
@@ -96,6 +98,7 @@ def run_mqtt():
     mqtt_client = mqtt.Client()
     mqtt_client.on_connect = on_connect
     mqtt_client.on_message = lambda client, userdata, message: on_message(client, userdata, message)
+    # mqtt_client.username_pw_set(MQTT_USERNAME, MQTT_PASSWORD)
     mqtt_client.connect(MQTT_BROKER, MQTT_PORT, 60)
     mqtt_client.loop_start()
 

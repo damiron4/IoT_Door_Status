@@ -46,8 +46,8 @@ if active > 0:
     rtc.memory(b'' + str(curr_status))
 
     station = WLAN(STA_IF)
-    ssid = "NUdormitory"
-    password = "1234512345"
+    ssid = "IoTLab"
+    password = "97079088"
     station.active(True)
     station.connect(ssid, password)
 
