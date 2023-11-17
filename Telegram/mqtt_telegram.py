@@ -139,8 +139,8 @@ async def post_chart(door_data):
 
 async def wait_periodically(door_data):
     while True:
-        await post_chart(door_data)
         await asyncio.sleep(3600*6)
+        await post_chart(door_data)
 
 async def periodic_post(door_data):
     await wait_periodically(door_data)
