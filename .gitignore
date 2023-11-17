@@ -1,2 +1,2 @@
-Telegram/charts/
-Telegram/__pycache__/
+./Telegram/charts/**
+./Telegram/__pycache__/
