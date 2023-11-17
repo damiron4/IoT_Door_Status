@@ -83,9 +83,9 @@ async def send_message(client, userdata, msg):
     now = datetime.now()
     door_data.add_field(now, message)
     if message == 1:
-        text = f"\U0001F7E9 Door is <b>OPEN</b>\n\U0001F551 Time: {now.strftime('%H:%M:%S')}"
+        text = f"\U0001F7E9 The door <b>OPENED</b>\n\U0001F551 Time: {now.strftime('%H:%M:%S')}"
     else:
-        text = f"\U0001F7E5 Door is <b>CLOSED</b>\n\U0001F551 Time: {now.strftime('%H:%M:%S')}"
+        text = f"\U0001F7E5 The door <b>CLOSED</b>\n\U0001F551 Time: {now.strftime('%H:%M:%S')}"
     data = {"chat_id": CHAT_ID, "text": text, "parse_mode":"HTML"}
     res = requests.get(f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage", data=data)
     code = res.status_code
