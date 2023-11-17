@@ -57,7 +57,7 @@ def get_plot(weights, starts, colors):
     plt.legend(handles=legend_elements, loc='lower left', bbox_to_anchor=(-0.01, -0.18), prop={'size': 9}, ncols=2)
     
     # Save the plot
-    filename = f'charts/door_status {datetime.now().strftime("%Y-%m-%d %H-%M-%S-%f")}.png'
+    filename = f'./Telegram/charts/door_status {datetime.now().strftime("%Y-%m-%d %H-%M-%S-%f")}.png'
     plt.savefig(filename)
     # plt.show()
     return filename
