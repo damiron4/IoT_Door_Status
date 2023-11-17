@@ -20,7 +20,7 @@ MQTT_TOPIC  = os.environ.get('MQTT_TOPIC')
 # MQTT_USERNAME  = os.environ.get('MQTT_USERNAME')
 # MQTT_PASSWORD  = os.environ.get('MQTT_PASSWORD')
 
-DATA_FILE = 'data.csv'
+DATA_FILE = './Telegram/data.csv'
 
 class DoorStatues:
     def __init__(self, file_path):
