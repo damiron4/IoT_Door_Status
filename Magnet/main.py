@@ -36,7 +36,7 @@ active = 0
 while active < 20 and active > -20:
     if prev_status != isOpen():
         active += 1
-    else:
+    elsex:
         active -= 1
     sleep(0.05)
     
@@ -56,8 +56,8 @@ if active > 0:
 
     print('Connection successful')
     BROKER_ADDR = 'test.mosquitto.org'
-    CLIENT_NAME = 'DOOR554'
-    TOPIC       = b'door/554'
+    CLIENT_NAME = 'DOOR441'
+    TOPIC       = b'door/441'
     
     mqttc = MQTTClient(CLIENT_NAME, BROKER_ADDR, port = 1883, keepalive=60)
     mqttc.connect()
