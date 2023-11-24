@@ -2,10 +2,12 @@ from time import sleep
 from esp32 import wake_on_ext0, WAKEUP_ANY_HIGH, WAKEUP_ALL_LOW
 from machine import Pin, RTC, deepsleep
 from network import WLAN, STA_IF
-import requests
-from datetime import datetime
+import urequests
+import utime
+from config import *
 
 sensor = Pin(4, mode = Pin.IN)
+now = utime.localtime()
 
 def change_signal(status):
     if status == 1:
@@ -47,31 +49,33 @@ if active > 0:
     rtc.memory(b'' + str(curr_status))
 
     station = WLAN(STA_IF)
-    ssid = "NU"
-    password = "1234512345"
+    ssid = wifi_config['ssid']
+    password = wifi_config['password']
     station.active(True)
     station.connect(ssid, password)
 
     while station.isconnected() == False:
-      pass
-
+        print("Trying to connect")
+        station.connect(ssid, password)    
     print('Connection successful')
-    TELEGRAM_TOKEN = '6780969852:AAFVgqyfmj8v4bw911R-AYem5-sRD0rcekI'
-    CHAT_ID = '-1002064110322'
-    now = datetime.now()
+    
     if  curr_status == 1:
-        text = f"\U0001F7E9 The door <b>OPENED</b>\n\U0001F551 Time: {now.strftime('%H:%M:%S')}"
+        text = "\U0001F7E9 The door OPENED\n\U0001F551 Time: %i:%i" % (now[3], now[4])
     else:
-        text = f"\U0001F7E5 The door <b>CLOSED</b>\n\U0001F551 Time: {now.strftime('%H:%M:%S')}"
-    data = {"chat_id": CHAT_ID, "text": text, "parse_mode":"HTML"}
-    requests.get(f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage", data=data)
+        text = "\U0001F7E5 The door CLOSED\n\U0001F551 Time: %i:%i" % (now[3], now[4])
+    url = 'https://api.telegram.org/bot' + telegram_token_config['token'] + '/sendMessage'
+    data = {'chat_id': telegram_chat_config['chat_id'], 'text': text, "parse_mode": "HTML"}
+    try:
+        response = urequests.get(url, json=data)
+        response.close()
+    except:
+        print('Error sending message')
 
 else:
-#     print("Active < 0")
     curr_status = isOpen()
     change_signal(curr_status)
     rtc.memory(b'' + str(curr_status))
 
 sleep(1)
-print("Going to deepsleep")
+print('Going to deepsleep')
 deepsleep()
